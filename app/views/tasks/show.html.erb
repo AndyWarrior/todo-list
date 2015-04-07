@@ -7,13 +7,17 @@
 
 <p>
   <strong>Complete:</strong>
-  <%= @task.complete %>
+  <% if @task.complete %>
+    <%= 'Task Complete' %>
+  <% else %>
+    <%= 'Task Incomplete' %>
+  <% end %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @task.user %>
+  <%= @task.user.name %>
 </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Edit', edit_user_task_path(@task.user, @task) %> |
+<%= link_to 'Back', user_tasks_path %>

@@ -7,7 +7,6 @@
     <tr>
       <th>Description</th>
       <th>Complete</th>
-      <th>User</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +14,14 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.description %></td>
-        <td><%= task.complete %></td>
-        <td><%= task.user %></td>
+        <td><%= task.description%></td>
+        <td>
+          <% if task.complete %>
+          <%= 'Task Complete' %>
+          <% else %>
+          <%= 'Task Incomplete' %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', user_task_path(task.user, task) %></td>
         <td><%= link_to 'Edit', edit_user_task_path(task.user, task) %></td>
         <td><%= link_to 'Destroy', user_task_path(task.user, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,3 +33,8 @@
 <br>
 
 <%= link_to 'New Task', new_user_task_path %>
+
+<br>
+<br>
+
+<%= link_to 'User list', root_url %>
